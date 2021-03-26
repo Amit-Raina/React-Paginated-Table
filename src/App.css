@@ -2,6 +2,23 @@
   text-align: center;
 }
 
+.pageDisplayButton{
+  border: 1px solid black;
+  width: 15px;
+  height: 15px;
+  padding-left: 7px;
+  padding-top: 1px;
+  margin: 0;
+}
+
+.tableButton3{
+  display:flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around; 
+}
+
+
 .App-logo {
   height: 40vmin;
   pointer-events: none;

@@ -219,10 +219,13 @@ class App extends Component{
   }
 
   nextPage = () => {
-    if(Math.ceil(this.state.students.length / this.state.limit) != this.state.currentPage){
+    if(Math.ceil(this.state.students.length / this.state.limit) !== this.state.currentPage){
       this.setState({
         currentPage : this.state.currentPage + 1  
       })
+    }
+    else{
+      alert("This is last Page !");
     }
   }
 
@@ -231,6 +234,9 @@ class App extends Component{
       this.setState({
         currentPage : this.state.currentPage - 1  
       })
+    }
+    else{
+      alert("This is First Page !");
     }
   }
 
@@ -250,15 +256,24 @@ class App extends Component{
  render(){
     const showTable = (
       <table cellSpacing="4" border = "1" cellPadding="3">
+        <thead>
+        <tr>  
         <th>Roll No</th>
         <th>Name</th>
         <th>Email</th>
+        </tr>
+        </thead>
+        <tbody>
         {
           this.state.students.map((detail,index) => {
             if(index >= (this.state.currentPage - 1)*this.state.limit && index < this.state.currentPage*this.state.limit)
-              return <Viewtable rn = {detail.rno} name = {detail.name} email = {detail.email}/>
+              return <Viewtable  key = {index.toString()} rn = {detail.rno} name = {detail.name} email = {detail.email}/>;
+            else  
+              return null;
             })
         }
+        </tbody>
+        <tfoot>
         <tr>
           <td className="">
             <button onClick={this.firstPage}>⇦⇦</button>
@@ -279,6 +294,7 @@ class App extends Component{
             </select>
           </td>
         </tr>
+        </tfoot>
       </table>
     );
 
